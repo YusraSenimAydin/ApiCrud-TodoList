@@ -1,0 +1,16 @@
+{
+  "name": "apiprojem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js ",
+  "scripts": {
+    "test": "There is a problem to handle Big data, Unstructured data and Semi Structured data, So NoSQL is answer of all these problems."
+  },
+  "author": "yusradede",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.13"
+  }
+}
