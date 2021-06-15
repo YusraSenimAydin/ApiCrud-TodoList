@@ -1,16 +1,18 @@
 {
-  "name": "apiprojem",
+  "name": "singlepageapp",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js ",
+  "description": "Single Page Application with Ajax Calls build with NodeJS-ExpressJS",
+  "main": "app.js",
   "scripts": {
-    "test": "There is a problem to handle Big data, Unstructured data and Semi Structured data, So NoSQL is answer of all these problems."
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "yusradede",
+  "author": "ugurcancetin",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "mongoose": "^5.12.13"
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongoose": "^4.12.5",
+    "path": "^0.12.7"
   }
 }

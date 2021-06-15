@@ -1,19 +1,20 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/gezilecekYerler');
+mongoose.connect('mongodb://localhost/yemekler-api');
 mongoose.set('debug', true);
 
-
 mongoose.Promise = Promise;
-var yerSchema = new mongoose.Schema ({
-    isim: {
-        type: String,
-        required: 'Yer ismi bos olamaz.'
+//Above code explanation -- To be able to use db.yemek.find().then blabla, so to be able to use promises.
+
+var yerSchema = new mongoose.Schema({
+    isim:{
+        type:String,
+        required: 'Isim bos olamaz'
     },
     ziyaret: {
-        type: Boolean,
+        type:Boolean,
         default: false
     },
-    olusturulmaTarihi: {
+    olusturulmaTarihi:{
         type: Date,
         default: Date.now
     }
