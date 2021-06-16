@@ -4,7 +4,14 @@ var express         = require('express'),
     bodyParser      = require('body-parser'); 
     path            = require('path');
 
-var yerlerRoutes = require('./routes/yerler');
+var toDoListRoutes = require('./routes/toDoList');
+var corsOptions = {
+    origin: 'http://127.0.0.1:3000/api/toDoList',
+    optionsSuccessStatus: 200, 
+    methods: "GET, PUT, DELETE, POST"
+}
+
+app.use(cors(corsOptions))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -18,7 +25,7 @@ app.get('/', (req, res)=>{
     res.sendFile(path.join(__dirname+'/test/anasayfa.html'));
 });
 
-app.use('/api/yerler', yerlerRoutes);
+app.use('/api/toDoList', toDoListRoutes);
 
 app.listen(port, ()=>{
     console.log('App is running on port : ' + port);
