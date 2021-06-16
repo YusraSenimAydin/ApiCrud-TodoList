@@ -48,34 +48,3 @@ input::placeholder {
     color: #464646;
 }
 
-.yerlerimiz {
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    font-size: 30px;
-    padding: 0 20px;
-    color: #080808;
-    cursor: pointer;
-}
-
-ul li:hover {
-    font-size: 35px;
-    border-radius: 30px;
-
-
-}
-
-.created {
-    text-decoration: line-through;
-    color: grey;
-}
-
-li span {
-    float: right;
-    opacity: 0;
-}
-
-li:hover span {
-    opacity: 1;
-    color: red;
-}

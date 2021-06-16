@@ -2,7 +2,7 @@ var express     = require('express'),
     router      = express.Router(),
     toDo         = require("../models/toDo");
 
-// DB'de olan butun yerleri JSON olarak gonder
+// DB'de olan butun todoları JSON olarak gonder
 router.get('/', (req, res)=>{
     toDo.find()
     .then((toDoListDB)=>{
@@ -14,7 +14,7 @@ router.get('/', (req, res)=>{
     })
 });
 
-// DB'ye yeni yer eklemek icin kullanilan route
+// DB'ye yeni todo eklemek 
 router.post('/', (req, res)=>{
     console.log(req.body);
     toDo.create(req.body)
@@ -28,7 +28,7 @@ router.post('/', (req, res)=>{
     })
 });
 
-//Show Route - specific olarak detayli bilgi gosterilmek istendiginde kullanilir
+//Show Route - s detayli bilgi 
 router.get('/:toDoID', (req, res)=>{
     toDo.findById(req.params.toDoID)
     .then((toDo)=>{

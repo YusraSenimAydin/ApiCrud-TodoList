@@ -1,7 +1,8 @@
 var express         = require('express'),
     app             = express(),
     port            = process.env.PORT || 3000,
-    bodyParser      = require('body-parser'); 
+    cors = require('cors'),
+    bodyParser      = require('body-parser'),
     path            = require('path');
 
 var toDoListRoutes = require('./routes/toDoList');
