@@ -6,7 +6,7 @@ var express = require('express'),
     connectDatabase = require("./db/connetDatabase");
 
 var corsOptions = {
-    origin: 'http://127.0.0.1:3000/api/toDoList',
+    origin: 'http://127.0.0.1:3000',
     optionsSuccessStatus: 200,
     methods: "GET, PUT, DELETE, POST"
 }
@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/main', 'anasayfa.html'));
 });
 
-app.use('/api/toDoList', toDoListRoutes);
+app.use('/', toDoListRoutes);
 
 app.listen( port, () => {
     console.log(`App Started on ${port} : ${process.env.NODE_ENV}`);

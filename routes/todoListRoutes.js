@@ -4,18 +4,28 @@ var express = require('express'),
 
 // DB'de olan butun todoları JSON olarak gonder-todoları listele
 router.get('/', (req, res) => {
-    toDo.find()
-        .then((toDoListDB) => {
-            res.json(toDoListDB);
-        })
-        .catch((err) => {
-            console.log(err);
-            res.send(err);
-        })
+    //     .then((toDoListDB) => {
+    //         res.json(toDoListDB);
+    //     })
+    //     .catch((err) => {
+    //         console.log(err);
+    //         res.send(err);
+    //     })
+    console.log("geldiiii");
+});
+router.get('/gelen', (req, res) => {
+    //     .then((toDoListDB) => {
+    //         res.json(toDoListDB);
+    //     })
+    //     .catch((err) => {
+    //         console.log(err);
+    //         res.send(err);
+    //     })
+    console.log("adwadwa");
 });
 
 // DB'ye yeni todo eklemek 
-router.post('/', (req, res) => {
+router.post('/api', (req, res) => {
     console.log(req.body);
     toDo.insertMany(req.body)
         .then((newTodo) => {
