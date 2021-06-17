@@ -3,8 +3,7 @@ var express = require('express'),
     cors = require('cors'),
     bodyParser = require('body-parser'),
     path = require('path'),
-    connectDatabase = require("./db/connetDatabase"),
-    toDoListRoutes = require('./routes/todoListRoutes');
+    connectDatabase = require("./db/connetDatabase");
 
 var corsOptions = {
     origin: 'http://127.0.0.1:3000/api/toDoList',
@@ -16,6 +15,7 @@ var corsOptions = {
 dotenv.config({
     path: "./config/config.env"
 });
+var toDoListRoutes = require('./routes/todoListRoutes');
 
 // MongoDb Connection
 connectDatabase.connectDatabase();
