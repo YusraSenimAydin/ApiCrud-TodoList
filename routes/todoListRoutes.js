@@ -1,8 +1,8 @@
 var express     = require('express'),
     router      = express.Router(),
-    toDo         = require("../models/toDo");
+    toDo         = require("../models/todoListModel");
 
-// DB'de olan butun todoları JSON olarak gonder
+// DB'de olan butun todoları JSON olarak gonder-todoları listele
 router.get('/', (req, res)=>{
     toDo.find()
     .then((toDoListDB)=>{
@@ -28,7 +28,7 @@ router.post('/', (req, res)=>{
     })
 });
 
-//Show Route - s detayli bilgi 
+//Show Route -  detayli bilgi 
 router.get('/:toDoID', (req, res)=>{
     toDo.findById(req.params.toDoID)
     .then((toDo)=>{
@@ -58,7 +58,7 @@ router.put('/:toDoId', (req, res)=>{
 router.delete('/:toDoId', (req, res)=>{
     toDo.remove({_id:req.params.toDoId})
     .then(()=>{
-        res.json({message:'Hadi bakalim sildik'})
+        res.json({message:'Task successfully deleted'})
     })
     .catch((err)=>{
         console.log('============HATA================');

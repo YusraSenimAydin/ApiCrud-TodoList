@@ -5,7 +5,7 @@ var express         = require('express'),
     bodyParser      = require('body-parser'),
     path            = require('path');
 
-var toDoListRoutes = require('./routes/toDoList');
+var toDoListRoutes = require('./routes/todoListRoutes');
 var corsOptions = {
     origin: 'http://127.0.0.1:3000/api/toDoList',
     optionsSuccessStatus: 200, 
@@ -19,11 +19,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(express.static(__dirname + '/public/stylesheets/'));
 app.use(express.static(__dirname + '/public/scripts/'));
-app.use(express.static(__dirname + '/public/assets/'));
+
 
 
 app.get('/', (req, res)=>{
-    res.sendFile(path.join(__dirname+'/test/anasayfa.html'));
+    res.sendFile(path.join(__dirname+'public/main/anasayfa.html'));
 });
 
 app.use('/api/toDoList', toDoListRoutes);
