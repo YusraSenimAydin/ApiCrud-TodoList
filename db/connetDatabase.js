@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 
 const connectDatabase = () => {
     mongoose.createConnection(process.env.MONGO_URI, {
