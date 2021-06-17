@@ -25,7 +25,7 @@ function toDoAdd(todo) {
 
 function todoNew(item) {
     var newtodo = `
-    <li class="yerlerimiz"> ${item.toDo}  
+    <li class="tasks"> ${item.toDo}  
     <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> 
     </li>`;
 

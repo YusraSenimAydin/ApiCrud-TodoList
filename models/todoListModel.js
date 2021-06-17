@@ -1,14 +1,15 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:3000/api/toDoList');
-mongoose.set('debug', true);
+var Schema = mongoose.Schema;
 
-mongoose.Promise = Promise;
-var toDoSchema = new mongoose.Schema({
+
+mongoose.Promise = global.Promise;
+
+var toDoSchema = new Schema({
     toDo:{
         type:String,
         required: 'Bos olamaz'
     },
-    case: {
+    case:{
         type:Boolean,
         default: false
     },
