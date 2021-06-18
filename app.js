@@ -6,7 +6,7 @@ var express = require('express'),
     connectDatabase = require("./db/connetDatabase");
 
 var corsOptions = {
-    origin: 'http://127.0.0.1:3000',
+    origin: 'http://127.0.0.1:3000/',
     optionsSuccessStatus: 200,
     methods: "GET, PUT, DELETE, POST"
 }

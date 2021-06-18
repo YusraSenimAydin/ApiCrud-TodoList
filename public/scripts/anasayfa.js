@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var url = 'http://127.0.0.1:3000/api/toDoList';
+    var url = 'http://127.0.0.1:3000/';
     fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -11,22 +11,19 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("haha");
             yeniToDoEkle();
         }
-    });
-
-   
+    });   
 });
 
-function todolarEkle(datalar) {
-    console.log(datalar);
-    datalar.forEach(function (item) {
+function todolarEkle(data) {
+    alert("todolarekle"+ data);
+    data.forEach(function (item) {
         todoEkle(item);
     });
 }
 
 function todoEkle(toDo) {
-    var yeniTodo = `<li class="todolarimiz"> ${toDo.toDo } <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> </li>`     
+    var yeniTodo = `<li class="todolarimiz"> ${toDo.toDo} <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> </li>`     
     yeniTodo.data('id', toDo._id);  
-
     if (toDo.case == true) {
         document.querySelector(yeniTodo).classList.add("completed");
     }
@@ -35,7 +32,8 @@ function todoEkle(toDo) {
 
 async function yeniToDoEkle(e) {
 
-    var yeniTodo = document.querySelector('#inputDiv').value;
+    var gelenTodo = document.querySelector('#inputDiv').value;
+    document.querySelector('.todoList').appendChild(gelenTodo);
 
     var response = await fetch('http://127.0.0.1:3000/api/toDoList', {
         method: 'POST',
