@@ -9,23 +9,22 @@ router.get('/', (req, res) => {
             res.json(toDoListDB);
         })
         .catch((err) => {
+            console.log('============HATA/GET================');
             console.log(err);
             res.send(err);
         })
         console.log("geldiii/get");
   
 });
-
-
 // DB'ye yeni todo eklemek 
 router.post('/', (req, res) => {
     console.log(req.body);
-    toDo.insert(req.body)
+    toDo.create(req.body)
         .then((newTodo) => {
             res.status(201).json(newTodo);
         })
         .catch((err) => {
-            console.log('============HATA================');
+            console.log('============HATA/POST================');
             console.log(err);
             res.send(err);
         })
@@ -39,7 +38,7 @@ router.get('/:toDoID', (req, res) => {
             res.json(toDo);
         })
         .catch((err) => {
-            console.log('============HATA================');
+            console.log('============HATA/GET/DETAY================');
             console.log(err);
             res.send(err);
         });
@@ -56,7 +55,7 @@ router.put('/:toDoId', (req, res) => {
             res.json(toDo);
         })
         .catch((err) => {
-            console.log('============HATA================');
+            console.log('============HATA/PUT================');
             console.log(err);
             res.send(err);
         })
@@ -73,7 +72,7 @@ router.delete('/:toDoId', (req, res) => {
             })
         })
         .catch((err) => {
-            console.log('============HATA================');
+            console.log('============HATA/DELETE================');
             console.log(err);
             res.send(err);
         })

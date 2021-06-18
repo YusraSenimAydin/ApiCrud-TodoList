@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var url = 'http://127.0.0.1:3000/';
+    var url = 'http://127.0.0.1:3000/api/toDoList';
     fetch(url)
         .then(response => response.json())
         .then(data => {
@@ -49,5 +49,4 @@ async function yeniToDoEkle(e) {
 
     const sonuc = await response.json();
     console.log(sonuc);
-    //document.querySelector('.todoList').appendChild(sonuc.toDo);
 }
