@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/main', 'anasayfa.html'));
 });
 
-app.use('/', toDoListRoutes);
+app.use('/api/toDoList', toDoListRoutes);
 
 app.listen( port, () => {
     console.log(`App Started on ${port} : ${process.env.NODE_ENV}`);
