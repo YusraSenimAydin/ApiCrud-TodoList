@@ -25,18 +25,18 @@ function todolarEkle(data) {
 
 function todoEkle(toDo) {
     console.log(`todo: ${toDo.toDo}`);
-    var yeniTodo = `<li class="todolarimiz"> ${toDo.toDo} <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> </li>`
-
+    var yeniTodo = '<li class="todolarimiz">'+toDo.toDo+ ' <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> </li>';
+    
     if (toDo.case == true) {
         document.querySelector(yeniTodo).classList.add("completed");
     }
-    document.querySelector('.todoList').append(yeniTodo);
+    document.querySelector('.todoList').appendChild(yeniTodo);
 }
 
 async function yeniToDoEkle() {
 
     var gelenTodo = document.querySelector('#inputDiv').value;
-    fetch('http://localhost:3000/', {
+    await fetch('http://localhost:3000/', {
             method: 'POST',
             body: JSON.stringify({
                 toDo: gelenTodo

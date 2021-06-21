@@ -3,7 +3,7 @@ const MONGO_URI = "mongodb+srv://yusradede:senim1234@todolist.ny1zh.mongodb.net/
 
 
 const connectDatabase = () => {
-    mongoose.createConnection(MONGO_URI, {
+    mongoose.connect(MONGO_URI, {
             
             useNewUrlParser: true,
             useFindAndModify: false,
@@ -29,6 +29,4 @@ const connectDatabase = () => {
 
 
 
-module.exports = {
-    connectDatabase
-}
+module.exports = connectDatabase

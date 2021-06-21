@@ -18,7 +18,7 @@ dotenv.config({
 var toDoListRoutes = require('./routes/todoListRoutes');
 
 // MongoDb Connection
-connectDatabase.connectDatabase();
+connectDatabase();
 
 var app = express();
 var port= process.env.PORT || 3000;
