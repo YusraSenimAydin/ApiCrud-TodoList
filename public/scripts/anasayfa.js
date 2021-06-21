@@ -1,10 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var url = 'http://127.0.0.1:3000/';
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            todolarEkle(data);
-        })
+    
+    getApi();
 
     document.getElementById("inputDiv").addEventListener("keypress", (e) => {
         if (e.keyCode === 13) {
@@ -14,6 +10,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });   
 });
 
+
+function getApi() {
+    var url = 'http://127.0.0.1:3000/api/toDoList';
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            todolarEkle(data);
+        })
+        .catch(err => console.log(err));
+
+}
 function todolarEkle(data) {
     alert("todolarekle"+ data);
     data.forEach(function (item) {
@@ -32,8 +39,7 @@ function todoEkle(toDo) {
 
 async function yeniToDoEkle(e) {
 
-    var gelenTodo = document.querySelector('#inputDiv').value;
-    document.querySelector('.todoList').appendChild(gelenTodo);
+    var gelenTodo = document.querySelector('#inputDiv').value;    
 
     var response = await fetch('http://127.0.0.1:3000/api/toDoList', {
         method: 'POST',

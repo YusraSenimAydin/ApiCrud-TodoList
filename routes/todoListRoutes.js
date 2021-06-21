@@ -4,7 +4,7 @@ var express = require('express'),
 
 // DB'de olan butun todoları JSON olarak gonder-todoları listele
 router.get('/', (req, res) => {
-        toDo.find()
+        toDo.find({}).toArray()
         .then((toDoListDB) => {
             res.json(toDoListDB);
         })
