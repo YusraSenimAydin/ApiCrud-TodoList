@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
-
+mongoose.Promise = Promise;
 var toDoSchema = new Schema({
     toDo:{
         type:String,

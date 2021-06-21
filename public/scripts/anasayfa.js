@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     getApi();
-
     document.getElementById("inputDiv").addEventListener("keypress", (e) => {
         if (e.keyCode === 13) {
             alert("haha");
@@ -12,36 +10,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function getApi() {
-    var url = 'http://127.0.0.1:3000/api/toDoList';
+    var url = 'http://localhost:3000/';
     fetch(url)
         .then(response => response.json())
-        .then(data => {
-            todolarEkle(data);
-        })
+        .then(data => todolarEkle(data))
         .catch(err => console.log(err));
 
 }
 
 function todolarEkle(data) {
     alert("todolarekle");
-    data.forEach(function (item) {
-        todoEkle(item);
-    });
+    data.forEach(item => todoEkle(item));
 }
 
 function todoEkle(toDo) {
+    console.log(`todo: ${toDo.toDo}`);
     var yeniTodo = `<li class="todolarimiz"> ${toDo.toDo} <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> </li>`
 
     if (toDo.case == true) {
         document.querySelector(yeniTodo).classList.add("completed");
     }
-    document.querySelector('.todoList').appendChild(yeniTodo);
+    document.querySelector('.todoList').append(yeniTodo);
 }
 
 async function yeniToDoEkle() {
 
     var gelenTodo = document.querySelector('#inputDiv').value;
-    fetch('http://127.0.0.1:3000/api/toDoList', {
+    fetch('http://localhost:3000/', {
             method: 'POST',
             body: JSON.stringify({
                 toDo: gelenTodo

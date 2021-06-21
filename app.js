@@ -5,11 +5,11 @@ var express = require('express'),
     path = require('path'),
     connectDatabase = require("./db/connetDatabase");
 
-var corsOptions = {
-    origin: 'http://127.0.0.1:3000/',
-    optionsSuccessStatus: 200,
-    methods: "GET, PUT, DELETE, POST"
-}
+// var corsOptions = {
+//     origin: 'http://localhost:3000/',
+//     optionsSuccessStatus: 200,
+//     methods: "GET, PUT, DELETE, POST"
+// }
 
 // Environment Variables
 dotenv.config({
@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.static(__dirname + '/public/stylesheets/'));
 app.use(express.static(__dirname + '/public/scripts/'));
@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/main', 'anasayfa.html'));
 });
 
-app.use('/api/toDoList', toDoListRoutes);
+app.use('/', toDoListRoutes);
 
 app.listen( port, () => {
     console.log(`App Started on ${port} : ${process.env.NODE_ENV}`);
