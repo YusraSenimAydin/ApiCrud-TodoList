@@ -25,12 +25,13 @@ function todolarEkle(data) {
 
 function todoEkle(toDo) {
     console.log(`todo: ${toDo.toDo}`);
-    var yeniTodo = '<li class="todolarimiz">'+toDo.toDo+ ' <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> </li>';
-    
-    if (toDo.case == true) {
-        document.querySelector(yeniTodo).classList.add("completed");
-    }
-    document.querySelector('.todoList').appendChild(yeniTodo);
+    // var yeniTodo = '<li class="todolarimiz">'+toDo.toDo +' <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> </li>';
+
+    // if (toDo.case == true) {
+    //     document.querySelector(yeniTodo).classList.add("completed");
+    // }
+   var todolist= document.getElementsByClassName('.todoList');
+   todolist.innerHTML += `<li class="todolarimiz">${toDo.toDo} <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> </li>`
 }
 
 async function yeniToDoEkle() {
