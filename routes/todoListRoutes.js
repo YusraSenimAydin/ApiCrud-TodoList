@@ -4,7 +4,7 @@ var express = require('express'),
 
 // DB'de olan butun todoları JSON olarak gonder-todoları listele
 router.get('/', (req, res) => {
-        toDo.find({})
+        toDo.find()
         .then((toDoListDB) => {
             res.json(toDoListDB);
         })
@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
             console.log(err);
             res.send(err);
         })
-        console.log("geldiii/get");
+        
   
 });
 // DB'ye yeni todo eklemek 
@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
             console.log(err);
             res.send(err);
         })
-        console.log("geldiii/post");
+       
 });
 
 //Show Route -  detayli bilgi 

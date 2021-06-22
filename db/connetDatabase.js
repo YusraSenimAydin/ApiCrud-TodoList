@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
-const MONGO_URI = "mongodb+srv://yusradede:senim1234@todolist.ny1zh.mongodb.net/todolist?retryWrites=true&w=majority"
-
-
 const connectDatabase = () => {
-    mongoose.connect(MONGO_URI, {
-            
+    mongoose.connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useFindAndModify: false,
             useCreateIndex: true,
@@ -17,16 +13,5 @@ const connectDatabase = () => {
         .catch(err => {
             console.error('Error in DB connection: ' + err);
         })
-
-
-    const connection = mongoose.connection;
-
-    connection.once("open", function () {
-        console.log("MongoDB database connection established successfully");
-    });
-
 }
-
-
-
 module.exports = connectDatabase
