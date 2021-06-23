@@ -36,11 +36,11 @@ app.use(express.static(__dirname + '/public/scripts/'));
 app.use(express.static(__dirname + '/public/main/'));
 
 
-app.get('/', (req, res) => {
+app.get('/todolist', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/main', 'anasayfa.html'));
 });
 
-app.use('/', toDoListRoutes);
+app.use('/todoList', toDoListRoutes);
 
 app.listen( port, () => {
     console.log(`App Started on ${port} : ${process.env.NODE_ENV}`);

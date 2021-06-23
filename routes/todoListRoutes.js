@@ -3,9 +3,10 @@ var express = require('express'),
     toDo = require("../models/todoListModel");
 
 // DB'de olan butun todoları JSON olarak gonder-todoları listele
-router.get('/', (req, res) => {
-        toDo.find()
+router.get('/a', (req, res) => {
+        toDo.find({})
         .then((toDoListDB) => {
+            console.log("api get todolar");
             res.json(toDoListDB);
         })
         .catch((err) => {

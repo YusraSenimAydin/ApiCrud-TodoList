@@ -47,75 +47,24 @@ input::placeholder {
     color: #464646;
 }
 
-/* .task-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: .5rem;
-    font-size: 1.2rem;
-    background-color: white;
-    transition: .5s ease-in-out;
-} */
-
 .todolarimiz {
     width: 100%;
-    height: 25em;
+    height: 60px;
     line-height: 60px;
-    font-size: 10em;
-    padding: 0 2em;
+    font-size: 30px;
+    padding: 0 20px;
     color: #080808;
     cursor: pointer;
 }
 
-/* .task-li {
-    flex: 1;
-    padding: 1rem;
-} */
-
-ul li {
-    font-size: 2em;
-}
-
-
 ul li:hover {
-    font-size: 35px;
+    font-size: 3em;
     border-radius: 30px;
-
-
 }
-/*
-.task-btn {
-    background: transparent;
-    background-color: var(--accent-color);
-    outline: none;
-    border: none;
-    font-size: 1.8em;
-    padding: 1.5rem;
-    color: white;
-}
-
-.task-btn-sil {
-
-    background-color: #a29bfe;
-}
-
-
-
-.task-btn-tamamlandi {
-    text-decoration: line-through;
-    opacity: 0.5;
-} */
-
-.far {
-    pointer-events: none;
-}
-
 .completed {
     text-decoration: line-through;
     color: grey;
 }
-
-
 li span {
 
     float: right;
@@ -124,5 +73,5 @@ li span {
 
 li:hover span {
     opacity: 1;
-    color: red;
+    color:  #a29bfe;
 }

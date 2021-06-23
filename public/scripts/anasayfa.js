@@ -1,69 +1,45 @@
-// const todolist = document.getElementById("todolist");
+document.addEventListener("DOMContentLoaded", function () {
+    var url = 'http://localhost:3000/todoList';
+    fetch(url)
+        .then(response => response.json())
+        .then(data => todolarEkle(data))
+        .catch(err => console.log(err));
 
-// fetch('http://localhost:3000/', {
-//         method: 'GET',
-//         headers: {
-//             "Content-type": "application/json;charset=UTF-8"
-//         }
-//     })
-//     .then(response => response.json())
-//     .then((gelenTodo) => {
-//         alert("asad")
+    document.getElementById("inputDiv").addEventListener("keypress", (e) => {
+        if (e.keyCode === 13) {
+            yeniToDoEkle();
+        }
+    });
 
-//         todoEkle(gelenTodo);
-//     })
-//     .catch(err => console.log(err))
+    document.querySelector("ul").addEventListener("click", function (e) {
+        var el = e.target;
+        if (el.className == "fa fa-trash-o") {
+            el.parentNode.parentNode.remove();
+        }
 
-document.getElementById("inputDiv").addEventListener("keypress", (e) => {
-    if (e.keyCode === 13) {
-        alert("haha");
-        yeniToDoEkle();
-    }
+    })
+
 });
 
+function todolarEkle(toDolar) {
+    toDolar.forEach(item => {
+        console.log(item)
+        todoEkle(item)
+    });
+}
 
+function todoEkle(toDo) {
+    console.log(`todo: ${toDo.toDo}`);
+    const todolist = document.getElementById('todoList');
+    todolist.innerHTML += `<li class="todolarimiz">${toDo.toDo} <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> </li>`
+}
 
-//function todoEkle(gelenTodo) {
-  //  console.log(gelenTodo.toDo);
-   // const todolist = document.getElementById("todolist");
-
-    // var yeniTodo = '<li class="todolarimiz">'+toDo.toDo +' <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> </li>';
-
-    // if (toDo.case == true) {
-    //     document.querySelector(yeniTodo).classList.add("completed");
-    // }
-
- //   todolist.innerHTML = `<li class="todolarimiz">${gelenTodo.toDo}<span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> </li>`;
-
-
-
-    // const taskDiv = document.createElement('div');
-    // taskDiv.classList.add('task-div');
-
-    // const taskLi = document.createElement('li');
-    // taskLi.classList.add('task-li');
-    // taskLi.innerText = gelenTodo.toDo;
-    // taskDiv.appendChild(taskLi);
-
-    // const taskTamamBtn = document.createElement('button');
-    // taskTamamBtn.classList.add('task-btn');
-    // taskTamamBtn.classList.add('task-btn-tamamlandi');
-    // taskTamamBtn.innerHTML = '<i class="far fa-check-square"></i>';
-    // taskDiv.appendChild(taskTamamBtn);
-
-    // const taskSilBtn = document.createElement('button');
-    // taskSilBtn.classList.add('task-btn');
-    // taskSilBtn.classList.add('task-btn-sil');
-    // taskSilBtn.innerHTML = '<i class="far fa-trash-alt"></i>';
-    // taskDiv.appendChild(taskSilBtn);
-
-    // todolist.appendChild(taskDiv);
- 
 function yeniToDoEkle() {
 
     var gelenTodo = document.querySelector('#inputDiv').value;
-   
-    fetch('http://localhost:3000/', {
+
+
+    fetch('http://localhost:3000/todoList', {
             method: 'POST',
             body: JSON.stringify({
                 toDo: gelenTodo
@@ -73,24 +49,11 @@ function yeniToDoEkle() {
             }
         })
         .then(response => response.json())
-        .then((gelenTodo) => {
-              
-           todoEkle(gelenTodo)
-
+        .then((yeniTodo) => {
+            console.log("post:" + yeniTodo.toDo);
+            todoEkle(yeniTodo);
+            document.querySelector('#inputDiv').value = '';
         })
         .catch(err => console.log(err))
-}
-function todoEkle(gelenTodo) {
-
-    const todoDiv=document.getElementById('todoDiv');
-    todoDiv.innerHTML= "";
-    var todoLi = document.createElement("li");
-    todoLi.classList.add("todolarimiz");
-    console.log(todoLi);
-    todoLi.innerHTML = `    
-    ${gelenTodo.toDo}
-    <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> 
-    `;
-
 
 }
