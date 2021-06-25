@@ -12,10 +12,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("ul").addEventListener("click", function (e) {
-        var el = e.target;
-        if (el.className == "fa fa-trash-o") {
-            el.parentNode.parentNode.remove();
-        }
+ 
+        var url = `http://localhost:3000/todoList/:toDoId`;
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            var el = e.target;
+            data._id.remove();
+            console.log("data id:" + data._id);
+            if (el.className == "fa fa-trash-o") {
+                el.parentNode.parentNode.remove();
+                data._id.remove();
+            }
+
+        });
+
+
+
+        
 
     })
 
