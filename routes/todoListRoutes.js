@@ -3,10 +3,9 @@ var express = require('express'),
     toDo = require("../models/todoListModel");
 
 // DB'de olan butun todoları JSON olarak gonder-todoları listele
-router.get('/a', (req, res) => {
+router.get('/getTado', (req, res) => {
         toDo.find({})
         .then((toDoListDB) => {
-            console.log("api get todolar");
             res.json(toDoListDB);
         })
         .catch((err) => {
@@ -63,7 +62,7 @@ router.put('/:toDoId', (req, res) => {
 });
 
 //Silmek istedigimizde kullanacagimiz Route
-router.delete('/:toDoId', (req, res) => {
+router.get('/delete/:toDoId', (req, res) => {
     toDo.remove({
             _id: req.params.toDoId
         })

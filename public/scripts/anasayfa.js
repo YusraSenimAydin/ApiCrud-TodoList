@@ -1,9 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
-    var url = 'http://localhost:3000/todoList';
-    fetch(url)
-        .then(response => response.json())
-        .then(data => todolarEkle(data))
-        .catch(err => console.log(err));
+document.addEventListener("DOMContentLoaded",  async function () {
+    var response= await fetch("http://localhost:3000/todoList/getTado")
+    var data=await response.json()
+    await todolarEkle(data)
 
     document.getElementById("inputDiv").addEventListener("keypress", (e) => {
         if (e.keyCode === 13) {
@@ -11,50 +9,46 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    document.querySelector("ul").addEventListener("click", function (e) {
- 
-        var url = `http://localhost:3000/todoList/:toDoId`;
-
-        fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            var el = e.target;
-            data._id.remove();
-            console.log("data id:" + data._id);
-            if (el.className == "fa fa-trash-o") {
-                el.parentNode.parentNode.remove();
-                data._id.remove();
-            }
-
-        });
-
-
-
-        
-
-    })
 
 });
+async function  removeElement(id){
+    event.stopPropagation();
+    var url = `http://localhost:3000/todoList/delete/`+id;
+    var el=event.target
+   await fetch(url)
+        .then(response => response.json())
+        .then(() => {
+            el.parentNode.parentNode.remove()
+        });
+}
+async function addClassTodo(id){
+    var liTodo=document.getElementById(id);
+    if (liTodo.classList[1] == "completed"){
+        liTodo.classList.remove('completed')
+    }
+    else {
+        liTodo.classList.add('completed')
+    }
+
+}
 
 function todolarEkle(toDolar) {
     toDolar.forEach(item => {
-        console.log(item)
         todoEkle(item)
     });
 }
 
-function todoEkle(toDo) {
-    console.log(`todo: ${toDo.toDo}`);
+ function todoEkle(toDo) {
     const todolist = document.getElementById('todoList');
-    todolist.innerHTML += `<li class="todolarimiz">${toDo.toDo} <span> <i class="fa fa-trash-o" aria-hidden="true"></i> </span> </li>`
+    todolist.innerHTML += `<li class="todolarimiz" onclick="addClassTodo('${toDo._id}')" id="${toDo._id}">${toDo.toDo} <span> <i class="fa fa-trash-o" aria-hidden="true" onclick="removeElement('${toDo._id}')"></i> </span> </li>`
 }
 
-function yeniToDoEkle() {
+async function yeniToDoEkle() {
 
     var gelenTodo = document.querySelector('#inputDiv').value;
 
 
-    fetch('http://localhost:3000/todoList', {
+ await   fetch('http://localhost:3000/todoList', {
             method: 'POST',
             body: JSON.stringify({
                 toDo: gelenTodo
@@ -65,7 +59,6 @@ function yeniToDoEkle() {
         })
         .then(response => response.json())
         .then((yeniTodo) => {
-            console.log("post:" + yeniTodo.toDo);
             todoEkle(yeniTodo);
             document.querySelector('#inputDiv').value = '';
         })
