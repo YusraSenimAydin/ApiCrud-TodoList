@@ -11,17 +11,17 @@ document.addEventListener("DOMContentLoaded",  async function () {
 
 
 });
-async function  removeElement(id){
+ function  removeElement(id){
     event.stopPropagation();
     var url = `http://localhost:3000/todoList/delete/`+id;
     var el=event.target
-   await fetch(url)
+    fetch(url)
         .then(response => response.json())
         .then(() => {
             el.parentNode.parentNode.remove()
         });
 }
-async function addClassTodo(id){
+ function addClassTodo(id){
     var liTodo=document.getElementById(id);
     if (liTodo.classList[1] == "completed"){
         liTodo.classList.remove('completed')
@@ -43,12 +43,12 @@ function todolarEkle(toDolar) {
     todolist.innerHTML += `<li class="todolarimiz" onclick="addClassTodo('${toDo._id}')" id="${toDo._id}">${toDo.toDo} <span> <i class="fa fa-trash-o" aria-hidden="true" onclick="removeElement('${toDo._id}')"></i> </span> </li>`
 }
 
-async function yeniToDoEkle() {
+ function yeniToDoEkle() {
 
     var gelenTodo = document.querySelector('#inputDiv').value;
 
 
- await   fetch('http://localhost:3000/todoList', {
+    fetch('http://localhost:3000/todoList', {
             method: 'POST',
             body: JSON.stringify({
                 toDo: gelenTodo
